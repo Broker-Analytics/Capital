@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Simulador.css" />
+    <title>Simulación Crédito Hipotecario</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- Header simple -->
+    <header class="header">
+      <div class="logo">BrokersCapital.com</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="Cotizador.html">Cotizador</a></li>
+          <!-- Enlace al propio Cotizador -->
+          <li><a href="Simulador.html">Simulador</a></li>
+          <!-- Enlace a Simulador -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="container">
+      <h1>Analisis de inversión</h1>
+      <!-- Contenedor izquierdo (Simulador de crédito hipotecario) -->
+      <div class="contenedor-izquierdo">
+        <h2>Simulación de Crédito Hipotecario</h2>
+        <div class="form-group">
+          <label for="valorUF">Valor del inmueble (UF)</label>
+          <input
+            type="number"
+            id="valorUF"
+            placeholder="Ingrese el valor del inmueble en UF"
+            value="-"
+          />
+        </div>
+        <div class="form-group">
+          <label for="financiamiento">Financiamiento (%)</label>
+          <input
+            type="number"
+            id="financiamiento"
+            placeholder="Porcentaje de financiamiento"
+            value="80"
+          />
+        </div>
+        <div class="form-group">
+          <label for="valorActualUF">Valor UF actual (CLP)</label>
+          <input
+            type="number"
+            id="valorActualUF"
+            placeholder="Valor actual de la UF en CLP"
+            value="37600"
+          />
+        </div>
+        <div class="form-group">
+          <label for="numCuotas">Número de cuotas</label>
+          <input
+            type="number"
+            id="numCuotas"
+            placeholder="Número de cuotas"
+            value="360"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tasaInteres">Tasa de interés anual (%)</label>
+          <input
+            type="number"
+            id="tasaInteres"
+            placeholder="Ingrese la tasa de interés anual"
+            value="4.5"
+          />
+        </div>
+        <div class="form-group">
+          <label for="seguroDesgravamen">Seguro Desgravamen (%)</label>
+          <input
+            type="number"
+            id="seguroDesgravamen"
+            placeholder="Ingrese porcentaje del seguro"
+            value="0.33"
+          />
+        </div>
+        <div class="form-group">
+          <label for="seguroIncendio">Seguro Incendio y Terremoto (%)</label>
+          <input
+            type="number"
+            id="seguroIncendio"
+            placeholder="Ingrese porcentaje del seguro"
+            value="1.2"
+          />
+        </div>
+        <div class="form-group">
+          <label for="plusvalia">Tasa de Plusvalía Anual (%)</label>
+          <input
+            type="number"
+            id="plusvalia"
+            placeholder="Ingrese la tasa de plusvalía anual"
+            value="5"
+          />
+        </div>
+        <button onclick="calcularCredito()">Calcular Crédito</button>
+      </div>
+
+      <!-- Calculadora de Cap Rate -->
+      <div class="calculadora-cap-rate">
+        <h2>Calculadora de Cap Rate</h2>
+        <div class="form-group">
+          <label for="noi">Ingreso Neto Operativo (NOI, UF)</label>
+          <input type="number" id="noi" placeholder="Ingrese el NOI anual" />
+        </div>
+        <div class="form-group">
+          <label for="mantencion">Costos de Mantenimiento (UF)</label>
+          <input
+            type="number"
+            id="mantencion"
+            placeholder="Ingrese los costos anuales de mantención"
+          />
+        </div>
+        <div class="form-group">
+          <label for="valorPropiedad">Valor de la Propiedad (UF)</label>
+          <input
+            type="number"
+            id="valorPropiedad"
+            placeholder="Ingrese el valor de la propiedad en UF"
+          />
+        </div>
+        <button onclick="calcularCapRate()">Calcular Cap Rate</button>
+
+        <!-- Resultado del Cap Rate -->
+        <div id="capRateResultado" style="margin-top: 20px"></div>
+      </div>
+
+      <!-- Resumen del crédito hipotecario -->
+      <div class="resultados">
+        <h2>Resumen del Crédito</h2>
+        <div class="result-item">
+          <span>Valor Crédito (UF):</span> <span id="valorCreditoCLP">0</span>
+        </div>
+        <div class="result-item">
+          <span>Dividendo mensual sin seguros (UF):</span>
+          <span id="dividendoSinSeguros">0</span>
+        </div>
+        <div class="result-item">
+          <span>Dividendo mensual con seguros (UF):</span>
+          <span id="dividendoConSeguros">0</span>
+        </div>
+        <div class="result-item">
+          <span>Saldo del C.H. en 5 años UF:</span> <span id="saldoCH">0</span>
+        </div>
+        <div class="result-item">
+          <span>Valorización depto en UF en 5 años:</span>
+          <span id="valorizacionUF">0</span>
+        </div>
+        <div class="result-item">
+          <span>Valorización depto en CLP:</span>
+          <span id="valorizacionCLP">0</span>
+        </div>
+        <div class="result-item">
+          <span>Ganancia en 5 años UF:</span> <span id="ganancia">0</span>
+        </div>
+        <div class="result-item">
+          <span>Ganancia en 5 años CLP:</span> <span id="gananciaCLP">0</span>
+        </div>
+      </div>
+
+      <!-- Gráfico de valorización -->
+      <div class="grafico-container">
+        <h2>Gráfico de Valorización en 5 años</h2>
+        <canvas id="resultadosChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Cargar los scripts de Chart.js y el archivo JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="CalculoSimulador.js" defer></script>
+    <script src="scrollEffect.js" defer></script>
+  </body>
+</html>

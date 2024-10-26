@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Cotizador.css" />
+    <title>Cotizador</title>
+    <script src="./calcularCuotas.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header simple -->
+    <header class="header">
+      <div class="logo">BrokersCapital.com</div>
+      <nav class="nav">
+        <ul>
+          <li><a href="Cotizador.html">Cotizador</a></li>
+          <!-- Enlace al propio Cotizador -->
+          <li><a href="Simulador.html">Simulador</a></li>
+          <!-- Enlace a Simulador -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="container">
+      <h1>Cotizador</h1>
+
+      <!-- Datos Financieros -->
+      <div class="form-section">
+        <h2>Financiamiento</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="valorUF">Valor UF</label>
+            <input type="number" id="valorUF" value="" />
+          </div>
+          <div class="form-group">
+            <label for="valorUnidad">Valor de Unidad (UF)</label>
+            <input type="number" id="valorUnidad" value="" />
+          </div>
+          <div class="form-group">
+            <label for="beneficioInmobiliario"
+              >Beneficio Inmobiliario (%)</label
+            >
+            <input type="number" id="beneficioInmobiliario" value="" />
+          </div>
+          <div class="form-group">
+            <label for="upFront">Up Front (%)</label>
+            <input type="number" id="upFront" value="" />
+          </div>
+          <div class="form-group">
+            <label for="pieAntes">% Pie antes de entrega</label>
+            <input type="number" id="pieAntes" value="" />
+          </div>
+          <div class="form-group">
+            <label for="pieDespues">% Pie después de entrega</label>
+            <input type="number" id="pieDespues" value="" />
+          </div>
+          <div class="form-group">
+            <label for="cuoton">Cuotón (%)</label>
+            <input type="number" id="cuoton" value="" />
+          </div>
+          <div class="form-group">
+            <label for="pieAntesCuotas">Cuotas antes de entrega</label>
+            <input type="number" id="pieAntesCuotas" value="" />
+          </div>
+          <div class="form-group">
+            <label for="pieDespuesCuotas">Cuotas después de entrega</label>
+            <input type="number" id="pieDespuesCuotas" value="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Precios y Cuotas en CLP -->
+      <div class="form-section">
+        <h2>Precios y Cuotas en CLP</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="upFrontCLP">Up Front (CLP)</label>
+            <input type="text" id="upFrontCLP" value="$0" disabled />
+          </div>
+          <div class="form-group">
+            <label for="cuotasAntesCLP">Cuotas antes de entrega</label>
+            <input type="text" id="cuotasAntesCLP" value="$0" disabled />
+          </div>
+          <div class="form-group">
+            <label for="cuotasDespuesCLP">Cuotas después de entrega</label>
+            <input type="text" id="cuotasDespuesCLP" value="$0" disabled />
+          </div>
+          <div class="form-group">
+            <label for="cuotonCLP">Cuotón (CLP)</label>
+            <input type="text" id="cuotonCLP" value="$0" disabled />
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de acción -->
+      <button id="generate-quote-btn" type="button" class="button">
+        Generar Cotización Individual
+      </button>
+    </div>
+    <script src="scrollEffect.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="ImpresionPDF.js" defer></script>
+  </body>
+</html>
